@@ -26,4 +26,3 @@
 
 
 ## Dodatkowe informacje
-
