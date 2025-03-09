@@ -1,17 +1,5 @@
 # Lista Zwierząt Afryki
 
-
-# Lista Zwierząt Afryki
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('a');
-    links.forEach(link => {
-        link.setAttribute('target', '_blank');
-    });
-});
-</script>
-
 <h2><a href="https://pl.wikipedia.org/wiki/Słoń_afrykański">Słoń afrykański</a></h2>
 Słoń afrykański jest największym zwierzęciem lądowym, jakie obecnie żyje na Ziemi. Jego długość wraz z trąbą wynosi nawet 7,5 metra, wysokość w kłębie do 4 metrów, a waga nawet 7 ton. Cechami, z których najbardziej znane są te zwierzęta żyjące w Afryce, są uszy o długości nawet 1,5 metra, trąba i charakterystyczne kły.
 
