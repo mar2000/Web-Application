@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-from googlesearch import search  # Używamy googlesearch zamiast duckduckgo_search
+from googlesearch import search  # Używamy googlesearch do wyszukiwania linków
 import time
 
 # Ściąganie strony internetowej
@@ -33,7 +33,17 @@ print(f"Znaleziono {len(animals)} zwierząt.")
 with open('animals.md', 'w') as f:
     f.write("# Lista Zwierząt Afryki\n\n")
     for name, description, image_url in animals:
-        f.write(f"## {name}\n")
+        # Wyszukaj link dla danego zwierzęcia
+        query = f"{name} zwierzę Afryka"
+        try:
+            results = list(search(query, num=1, stop=1, pause=10))  # Zwraca tylko 1 wynik
+            link = results[0] if results else "#"  # Użyj "#", jeśli nie znaleziono linku
+        except Exception as e:
+            print(f"Błąd podczas wyszukiwania informacji dla {name}: {e}")
+            link = "#"
+        
+        # Nagłówek z linkiem
+        f.write(f'<h2><a href="{link}" target="_blank">{name}</a></h2>\n')
         f.write(f"{description}\n\n")
         if image_url != "Brak obrazka":
             f.write(f"![Obrazek]({image_url})\n")
@@ -56,20 +66,3 @@ for i, (name, description, image_url) in enumerate(animals):
             print(f"Zapisano obrazek: animal_{i}.jpg")
         except Exception as e:
             print(f"Nie udało się pobrać obrazka {image_url}: {e}")
-
-# Wyszukiwanie dodatkowych informacji za pomocą Google
-with open('animals.md', 'a') as f:  # Otwórz plik w trybie dopisywania
-    f.write("\n## Dodatkowe informacje\n\n")
-    for name, description, image_url in animals:
-        query = f"{name} zwierzę Afryka"
-        try:
-            # Wyszukiwanie za pomocą Google
-            results = list(search(query, num=1, stop=1, pause=10))  # Zwraca tylko 1 wynik
-            if results:
-                # Używamy HTML z atrybutem target="_blank"
-                f.write(f'- <a href="{results[0]}" target="_blank"> {name}</a>\n')
-                print(f"Znaleziono dodatkowe informacje dla {name}: {results[0]}")
-            else:
-                print(f"Nie znaleziono wyników dla {name}")
-        except Exception as e:
-            print(f"Błąd podczas wyszukiwania informacji dla {name}: {e}")
