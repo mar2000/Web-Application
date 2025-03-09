@@ -1,11 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-from duckduckgo_search import DDGS
+from googlesearch import search  # Używamy googlesearch zamiast duckduckgo_search
 import time
-
-# Tworzenie obiektu DDGS
-ddgs = DDGS()
 
 # Ściąganie strony internetowej
 url = "https://afryka.biz.pl/zwierzeta-afryki/"
@@ -60,18 +57,18 @@ for i, (name, description, image_url) in enumerate(animals):
         except Exception as e:
             print(f"Nie udało się pobrać obrazka {image_url}: {e}")
 
-
-# Wyszukiwanie dodatkowych informacji za pomocą DuckDuckGo
+# Wyszukiwanie dodatkowych informacji za pomocą Google
 with open('animals.md', 'a') as f:  # Otwórz plik w trybie dopisywania
     f.write("\n## Dodatkowe informacje\n\n")
     for name, description, image_url in animals:
         query = f"{name} zwierzę Afryka"
         try:
-            # Wyszukiwanie za pomocą DuckDuckGo
-            results = ddgs.text(query, max_results=1)  # Zwraca tylko 1 wynik
+            # Wyszukiwanie za pomocą Google
+            results = list(search(query, num=1, stop=1, pause=10))  # Zwraca tylko 1 wynik
             if results:
-                f.write(f"- **DuckDuckGo:** [{name}]({results[0]['link']})\n")
-                print(f"Znaleziono dodatkowe informacje dla {name}: {results[0]['link']}")
+                # Używamy HTML z atrybutem target="_blank"
+                f.write(f'- <a href="{results[0]}" target="_blank"> {name}</a>\n')
+                print(f"Znaleziono dodatkowe informacje dla {name}: {results[0]}")
             else:
                 print(f"Nie znaleziono wyników dla {name}")
         except Exception as e:
