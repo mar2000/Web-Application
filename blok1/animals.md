@@ -62,23 +62,15 @@ Brak opisu
 
 ## Dodatkowe informacje
 
-- **Google:** [Słoń afrykański](https://pl.wikipedia.org/wiki/S%C5%82o%C5%84_afryka%C5%84ski)
-- **Google:** [Lew](https://pl.wikipedia.org/wiki/Lew_afryka%C5%84ski)
-- **Google:** [Żyrafa](https://pl.wikipedia.org/wiki/%C5%BByrafa)
-- **Google:** [Gepard](https://pl.wikipedia.org/wiki/Gepard_grzywiasty)
-- **Google:** [Bawół afrykański](https://pl.wikipedia.org/wiki/Baw%C3%B3%C5%82_afryka%C5%84ski)
-- **Google:** [Hipopotam](https://pl.wikipedia.org/wiki/Hipopotam_nilowy)
-- **Google:** [Nosorożec](https://pl.wikipedia.org/wiki/Nosoro%C5%BCec_bia%C5%82y)
-- **Google:** [Pelikan](https://afrykanka.pl/z-pelikanem-dziob-w-dziob/)
-- **Google:** [Szympans](https://pl.wikipedia.org/wiki/Szympans)
-- **Google:** [Goryl](https://pl.wikipedia.org/wiki/Goryl)
-- **Google:** [Zebra](https://pl.wikipedia.org/wiki/Zebra)
-- **Google:** [Sprawdź](https://samequizy.pl/rozpoznasz-zwierzeta-afryki-sprawdz/)
-  
-
-
-## Dodatkowe informacje
-
-- <a href="https://pl.wikipedia.org/wiki/Słoń_afrykański" target="_blank">**Google:** Słoń afrykański</a>
-- <a href="https://www.nationalgeographic.com/animals/mammals/l/lion/" target="_blank">**Google:** Lew</a>
-- <a href="https://www.worldwildlife.org/species/giraffe" target="_blank">**Google:** Żyrafa</a>
+- <a href="https://pl.wikipedia.org/wiki/S%C5%82o%C5%84_afryka%C5%84ski" target="_blank"> Słoń afrykański</a>
+- <a href="https://pl.wikipedia.org/wiki/Lew_afryka%C5%84ski" target="_blank"> Lew</a>
+- <a href="https://pl.wikipedia.org/wiki/%C5%BByrafa" target="_blank"> Żyrafa</a>
+- <a href="https://pl.wikipedia.org/wiki/Gepard_grzywiasty" target="_blank"> Gepard</a>
+- <a href="https://pl.wikipedia.org/wiki/Baw%C3%B3%C5%82_afryka%C5%84ski" target="_blank"> Bawół afrykański</a>
+- <a href="https://pl.wikipedia.org/wiki/Hipopotam_nilowy" target="_blank"> Hipopotam</a>
+- <a href="https://pl.wikipedia.org/wiki/Nosoro%C5%BCec_bia%C5%82y" target="_blank"> Nosorożec</a>
+- <a href="https://afrykanka.pl/z-pelikanem-dziob-w-dziob/" target="_blank"> Pelikan</a>
+- <a href="https://pl.wikipedia.org/wiki/Szympans" target="_blank"> Szympans</a>
+- <a href="https://pl.wikipedia.org/wiki/Goryl" target="_blank"> Goryl</a>
+- <a href="https://pl.wikipedia.org/wiki/Zebra" target="_blank"> Zebra</a>
+- <a href="https://samequizy.pl/rozpoznasz-zwierzeta-afryki-sprawdz/" target="_blank"> Sprawdź</a>
