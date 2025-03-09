@@ -5,7 +5,7 @@ Słoń afrykański jest największym zwierzęciem lądowym, jakie obecnie żyje 
 
 ![Obrazek](https://afryka.biz.pl/wp-content/uploads/2019/02/slon-afrykanski-1024x683.jpg)
 
-<h2><a href="https://pl.wikipedia.org/wiki/Lew_afryka%C5%84ski" target="_blank">Lew</a>/h2>
+<h2><a href="https://pl.wikipedia.org/wiki/Lew_afryka%C5%84ski" target="_blank">Lew</a></h2>
 Nazywany potocznie królem zwierząt – lew, jest drugim co do wielkości kotem na Ziemi, o długości całkowitej sięgającej 3,5 metra wraz z metrowym ogonem. Lwy to najniebezpieczniejsze zwierzęta Afryki. Charakterystyczna dla samca lwa jest bujna grzywa wokół głowy, zwykle w takim samym, jasnobrązowym kolorze, jak reszta ciała zwierzęcia.
 
 ![Obrazek](https://afryka.biz.pl/wp-content/uploads/2019/02/lew-1024x652.jpg)
