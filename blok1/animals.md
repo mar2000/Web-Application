@@ -74,3 +74,11 @@ Brak opisu
 - **Google:** [Goryl](https://pl.wikipedia.org/wiki/Goryl)
 - **Google:** [Zebra](https://pl.wikipedia.org/wiki/Zebra)
 - **Google:** [Sprawdź](https://samequizy.pl/rozpoznasz-zwierzeta-afryki-sprawdz/)
+  
+
+
+## Dodatkowe informacje
+
+- <a href="https://pl.wikipedia.org/wiki/Słoń_afrykański" target="_blank">**Google:** Słoń afrykański</a>
+- <a href="https://www.nationalgeographic.com/animals/mammals/l/lion/" target="_blank">**Google:** Lew</a>
+- <a href="https://www.worldwildlife.org/species/giraffe" target="_blank">**Google:** Żyrafa</a>
