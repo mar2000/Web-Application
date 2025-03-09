@@ -1,6 +1,8 @@
 # Lista Zwierząt Afryki
 
 
+# Lista Zwierząt Afryki
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('a');
@@ -9,6 +11,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<h2><a href="https://pl.wikipedia.org/wiki/Słoń_afrykański">Słoń afrykański</a></h2>
+Słoń afrykański jest największym zwierzęciem lądowym, jakie obecnie żyje na Ziemi. Jego długość wraz z trąbą wynosi nawet 7,5 metra, wysokość w kłębie do 4 metrów, a waga nawet 7 ton. Cechami, z których najbardziej znane są te zwierzęta żyjące w Afryce, są uszy o długości nawet 1,5 metra, trąba i charakterystyczne kły.
+
+![Obrazek](https://afryka.biz.pl/wp-content/uploads/2019/02/slon-afrykanski-1024x683.jpg)
+
+<h2><a href="https://pl.wikipedia.org/wiki/Lew_afrykański">Lew</a></h2>
+Nazywany potocznie królem zwierząt – lew, jest drugim co do wielkości kotem na Ziemi, o długości całkowitej sięgającej 3,5 metra wraz z metrowym ogonem. Lwy to najniebezpieczniejsze zwierzęta Afryki. Charakterystyczna dla samca lwa jest bujna grzywa wokół głowy, zwykle w takim samym, jasnobrązowym kolorze, jak reszta ciała zwierzęcia.
+
+![Obrazek](https://afryka.biz.pl/wp-content/uploads/2019/02/lew-1024x652.jpg)
+
+## Dodatkowe informacje
+
+- <a href="https://pl.wikipedia.org/wiki/Słoń_afrykański"> Słoń afrykański</a>
+- <a href="https://pl.wikipedia.org/wiki/Lew_afrykański"> Lew</a>
 
 
 <h2><a href="https://pl.wikipedia.org/wiki/S%C5%82o%C5%84_afryka%C5%84ski" target="_blank">Słoń afrykański</a></h2>
