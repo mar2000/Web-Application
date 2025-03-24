@@ -1,0 +1,123 @@
+// Zmienne
+$background-color: #f4f4f4;
+$text-color: #333;
+$link-color: #0077cc;
+$hover-color: #005599;
+
+// Mixin do zmiany koloru tła na hover
+@mixin hover-effect {
+    &:hover {
+        background-color: $hover-color;
+        color: white;
+    }
+}
+
+// Mixin do responsywności
+@mixin responsive-layout {
+    @media (max-width: 800px) {
+        flex-direction: column;
+        .nav {
+            display: none; // Ukryj nawigację na małych ekranach
+        }
+        .section {
+            order: -1; // Zmień kolejność sekcji
+        }
+    }
+}
+
+// Mixin do justify-content
+@mixin justify-content($alignment) {
+    justify-content: $alignment;
+}
+
+// Zagnieżdżanie i pseudo-klasy
+body {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: darken($background-color, 10%);
+}
+
+.nav {
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        @include justify-content(space-around); // Równomiernie rozłożone
+        background-color: lighten($background-color, 5%);
+        padding: 10px;
+
+        li {
+            a {
+                color: $link-color;
+                text-decoration: none;
+                @include hover-effect;
+            }
+        }
+    }
+}
+
+.main {
+    display: flex;
+    @include justify-content(space-between); // Równomiernie rozłożone
+    padding: 20px;
+    @include responsive-layout;
+
+    .section {
+        flex: 1;
+        margin: 10px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (min-width: 800px) {
+            &:hover {
+                background-color: lighten($hover-color, 40%);
+            }
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: darken($background-color, 10%);
+    margin-top: 20px;
+}
+
+// Dodatkowe klasy do demonstracji justify-content
+.container {
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+
+    &.left {
+        @include justify-content(flex-start); // Do lewej
+    }
+
+    &.right {
+        @include justify-content(flex-end); // Do prawej
+    }
+
+    &.center {
+        @include justify-content(center); // Na środku
+    }
+
+    &.space-between {
+        @include justify-content(space-between); // Równomiernie rozłożone
+    }
+}

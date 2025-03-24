@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Afryki ze zwierzętami</title>
+    <style>
+        /* Styl dla modala */
+        .modal {
+            display: none; /* Ukryj modal domyślnie */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Przyciemnione tło */
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mapa Afryki ze zwierzętami</h1>
+    <p>Kliknij na jedno ze zwierząt, aby dowiedzieć się więcej:</p>
+
+    <!-- Obrazek z mapą -->
+    <img src="mapka.png" usemap="#image-map">
+
+    <!-- Definicja mapy -->
+    <map name="image-map">
+        <area target="_self" alt="Zebra" title="Zebra" href="#" coords="623,842,581,840,581,787,533,782,535,843,491,831,506,772,490,695,466,682,470,666,520,677,538,728,612,731" shape="poly" onclick="openModal('zebraModal')">
+        <area target="_self" alt="Lew" title="Lew" href="#" coords="557,630,658,634,649,599,677,557,665,505,625,497,595,524,601,557,568,581" shape="poly" onclick="openModal('lewModal')">
+        <area target="_self" alt="Nosorozec" title="Nosorozec" href="#" coords="692,476,655,472,657,449,624,446,622,473,586,468,582,412,608,378,650,376,675,359,706,367,737,426,760,420,758,449,727,466,699,434" shape="poly" onclick="openModal('nosorozecModal')">
+        <area target="_self" alt="Slon" title="Slon" href="#" coords="330,616,384,615,379,572,445,569,441,619,494,619,504,527,539,570,540,510,581,472,526,439,484,454,448,469,353,482" shape="poly" onclick="openModal('slonModal')">
+        <area target="_self" alt="Zyrafa" title="Zyrafa" href="#" coords="225,368,223,453,181,453,207,335,249,304,305,220,312,198,341,198,331,227,320,241,288,352,293,446,256,454,258,363" shape="poly" onclick="openModal('zyrafaModal')">
+        <area target="_self" alt="Hipopotam" title="Hipopotam" href="#" coords="534,413,498,415,496,400,422,393,418,409,386,415,386,382,336,379,324,359,336,349,350,314,386,308,470,295,532,309,544,352" shape="poly" onclick="openModal('hipopotamModal')">
+        <area target="_self" alt="Goryl" title="Goryl" href="#" coords="468,254,399,254,375,239,367,201,389,176,402,141,427,132,441,119,462,127,477,150,474,194,481,219" shape="poly" onclick="openModal('gorylModal')">
+    </map>
+
+    <!-- Modale dla każdego zwierzęcia -->
+    <div id="zebraModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('zebraModal')">&times;</span>
+            <h2>Zebra</h2>
+            <img src="zebra.jpg" alt="Zebra" style="width:100%; max-width:300px;">
+            <p>Zebra to zwierzę charakterystyczne dzięki swoim czarno-białym pasom. Żyje w stadach na sawannach Afryki.</p>
+        </div>
+    </div>
+
+    <div id="lewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('lewModal')">&times;</span>
+            <h2>Lew</h2>
+            <img src="lew.jpg" alt="Lew" style="width:100%; max-width:300px;">
+            <p>Lew to król zwierząt, jeden z największych drapieżników w Afryce. Samce mają charakterystyczną grzywę.</p>
+        </div>
+    </div>
+
+    <div id="nosorozecModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('nosorozecModal')">&times;</span>
+            <h2>Nosorożec</h2>
+            <img src="nosorozec.jpg" alt="Nosorożec" style="width:100%; max-width:300px;">
+            <p>Nosorożec to masywne zwierzę z charakterystycznym rogiem. Jest zagrożony wyginięciem z powodu kłusownictwa.</p>
+        </div>
+    </div>
+
+    <div id="slonModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('slonModal')">&times;</span>
+            <h2>Słoń afrykański</h2>
+            <img src="slon.jpg" alt="Słoń" style="width:100%; max-width:300px;">
+            <p>Słoń afrykański to największe zwierzę lądowe na Ziemi. Charakteryzuje się długą trąbą i dużymi uszami.</p>
+        </div>
+    </div>
+
+    <div id="zyrafaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('zyrafaModal')">&times;</span>
+            <h2>Żyrafa</h2>
+            <img src="zyrafa.jpg" alt="Żyrafa" style="width:100%; max-width:300px;">
+            <p>Żyrafa to najwyższe zwierzę lądowe. Żywi się liśćmi z wysokich drzew dzięki swojej długiej szyi.</p>
+        </div>
+    </div>
+
+    <div id="hipopotamModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('hipopotamModal')">&times;</span>
+            <h2>Hipopotam</h2>
+            <img src="hipopotam.jpg" alt="Hipopotam" style="width:100%; max-width:300px;">
+            <p>Hipopotam to duże zwierzę wodne, które spędza większość czasu w rzekach i jeziorach Afryki.</p>
+        </div>
+    </div>
+
+    <div id="gorylModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('gorylModal')">&times;</span>
+            <h2>Goryl</h2>
+            <img src="goryl.jpg" alt="Goryl" style="width:100%; max-width:300px;">
+            <p>Goryl to największa małpa człekokształtna. Żyje w lasach Afryki i jest zagrożony wyginięciem.</p>
+        </div>
+    </div>
+
+    <script>
+        // Funkcja do otwierania modala
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        // Funkcja do zamykania modala
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Zamknij modal po kliknięciu poza nim
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2023 Mapa Afryki ze zwierzętami. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>

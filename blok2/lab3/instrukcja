@@ -1,0 +1,8 @@
+Zapisz kod HTML jako index.html.
+Zapisz kod SCSS jako styles.scss.
+
+Skompiluj SCSS do CSS (np. za pomocą narzędzia Sass):
+
+sass styles.scss styles.css
+
+Otwórz plik index.html w przeglądarce.

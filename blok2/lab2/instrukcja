@@ -1,0 +1,9 @@
+Instalacja:
+
+sudo npm install -g html-validate
+
+
+Odpalenie validate
+
+html-validate index.html
+
