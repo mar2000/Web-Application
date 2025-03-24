@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Zwierzątka</title>
+    <style>
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 350px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            background-color: white;
+            background-size: cover;
+        }
+        
+        #dino {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            bottom: 10px;
+            left: 50px;
+            background-image: url('antylopa1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        #ground {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            bottom: 0;
+            background-color: #8B4513;
+        }
+        
+        .cactus {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            bottom: 10px;
+            background-image: url('lew1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        #score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+        
+        #game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: #c09800;
+            display: none;
+            text-shadow: 2px 2px 4px black;
+        }
+        
+        #restart {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #4c72af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        #start {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #4c72af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Media query dla szerokości mniejszej niż 1400px */
+        @media (max-width: 1399px) {
+            .game-content {
+                display: none;
+            }
+            .screen-too-small {
+                display: block !important;
+                text-align: center;
+                padding: 20px;
+                font-size: 18px;
+                color: #d32f2f;
+                background-color: #ffebee;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+        }
+
+        .screen-too-small {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="content-box w-[70%] max-w-[1400px] bg-gray-100 border-2 border-gray-300 shadow-[0_4px_8px_rgba(0,0,0,0.1)] text-gray-800 font-sans mx-auto p-8 rounded-lg">
+        <h1 id="zwierzęta-afryki" class="text-4xl font-bold text-sky-600 mb-4">Skacząca antylopa</h1>
+        
+        <div class="screen-too-small">
+            Twoja przeglądarka jest zbyt wąska, aby grać w tę grę.<br>
+            Minimalna wymagana szerokość to 1400px.<br>
+            Obróć urządzenie lub użyj większego ekranu.
+        </div>
+        
+        <div class="game-content">
+            <div id="game-container">
+                <div id="dino"></div>
+                <div id="ground"></div>
+                <div id="score">0</div>
+                <div id="game-over">Game Over</div>
+                <button id="restart">Restart</button>
+                <button id="start">Start</button>
+            </div>
+        </div>
+
+        <script>
+            // Funkcja sprawdzająca rozmiar ekranu
+            function checkScreenSize() {
+                const gameContent = document.querySelector('.game-content');
+                const warningMessage = document.querySelector('.screen-too-small');
+                
+                if (window.innerWidth < 1400) {
+                    gameContent.style.display = 'none';
+                    warningMessage.style.display = 'block';
+                } else {
+                    gameContent.style.display = 'block';
+                    warningMessage.style.display = 'none';
+                }
+            }
+
+            // Sprawdź rozmiar przy ładowaniu
+            checkScreenSize();
+
+            // Nasłuchuj zmian rozmiaru okna
+            window.addEventListener('resize', checkScreenSize);
+
+            // Reszta kodu gry (tylko jeśli ekran jest wystarczająco duży)
+            if (window.innerWidth >= 1400) {
+                const dino = document.getElementById('dino');
+                const game = document.getElementById('game-container');
+                const scoreElement = document.getElementById('score');
+                const gameOverElement = document.getElementById('game-over');
+                const restartButton = document.getElementById('restart');
+                const startButton = document.getElementById('start');
+                
+                let isJumping = false;
+                let isGameOver = false;
+                let isGameStarted = false;
+                let score = 0;
+                let speed = 5;
+                let gravity = 0.9;
+                let position = 0;
+                let cacti = [];
+                let gameInterval;
+                let animationInterval;
+                let spacePressed = false;
+                let currentDinoImage = 'antylopa1.png';
+                let isDinoInAir = false;
+                const MIN_CACTUS_DISTANCE = 250;
+                
+                function startGame() {
+                    isGameStarted = true;
+                    startButton.style.display = 'none';
+                    score = 0;
+                    speed = 5;
+                    position = 0;
+                    scoreElement.textContent = score;
+                    
+                    // Usuń wszystkie lwy
+                    clearCacti();
+                    
+                    // Pokaż żyrafę
+                    dino.style.display = 'block';
+                    
+                    // Rozpocznij animację żyrafy
+                    startDinoAnimation();
+                    createCactus();
+                    
+                    gameInterval = setInterval(() => {
+                        if (!isGameOver) {
+                            updateScore();
+                            
+                            cacti.forEach(cactus => {
+                                let cactusPosition = parseInt(cactus.style.left);
+                                cactus.style.left = (cactusPosition - speed) + 'px';
+                                
+                                if (cactusPosition < -60) {
+                                    game.removeChild(cactus);
+                                    cacti.shift();
+                                }
+                            });
+                            
+                            checkCollision();
+                            
+                            if (spacePressed && !isJumping && !isGameOver) {
+                                jump();
+                            }
+                        }
+                    }, 20);
+                }
+                
+                function clearCacti() {
+                    // Utwórz kopię tablicy, ponieważ usuwanie elementów modyfikuje oryginalną tablicę
+                    const cactiCopy = [...cacti];
+                    cactiCopy.forEach(cactus => {
+                        if (cactus.parentNode === game) {
+                            game.removeChild(cactus);
+                        }
+                    });
+                    cacti = [];
+                }
+                
+                function canAddCactus() {
+                    if (cacti.length === 0) return true;
+                    const lastCactus = cacti[cacti.length - 1];
+                    const lastCactusPos = parseInt(lastCactus.style.left);
+                    return (800 - lastCactusPos) >= MIN_CACTUS_DISTANCE;
+                }
+                
+                function startDinoAnimation() {
+                    let frame = 1;
+                    animationInterval = setInterval(() => {
+                        if (!isDinoInAir) {
+                            frame = frame === 1 ? 2 : 1;
+                            dino.style.backgroundImage = `url('antylopa${frame}.png')`;
+                        }
+                    }, 200);
+                }
+                
+                startButton.addEventListener('click', startGame);
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 32 || e.keyCode === 38) {
+                        if (!isGameStarted) {
+                            startGame();
+                        } else if (!isJumping && !isGameOver) {
+                            jump();
+                        } else if (isGameOver) {
+                            restartGame();
+                        }
+                        spacePressed = true;
+                    }
+                });
+                
+                document.addEventListener('keyup', (e) => {
+                    if (e.keyCode === 32 || e.keyCode === 38) {
+                        spacePressed = false;
+                    }
+                });
+                
+                restartButton.addEventListener('click', restartGame);
+                
+                function jump() {
+                    isJumping = true;
+                    isDinoInAir = true;
+                    dino.style.backgroundImage = "url('antylopa1.png')";
+                    let jumpCount = 0;
+                    let jumpInterval = setInterval(() => {
+                        if (jumpCount < 25) {
+                            position += 25;
+                            position *= gravity;
+                            dino.style.bottom = (position + 10) + 'px';
+                            jumpCount++;
+                        }
+                        else if (jumpCount >= 25 && position > 0) {
+                            position -= 25;
+                            position *= gravity * 0.9;
+                            dino.style.bottom = (position + 10) + 'px';
+                            
+                            if (position <= 0) {
+                                clearInterval(jumpInterval);
+                                isJumping = false;
+                                isDinoInAir = false;
+                                position = 0;
+                                dino.style.bottom = '10px';
+                            }
+                        }
+                        else {
+                            clearInterval(jumpInterval);
+                            isJumping = false;
+                            isDinoInAir = false;
+                            position = 0;
+                            dino.style.bottom = '10px';
+                        }
+                    }, 20);
+                }
+                
+                function createCactus() {
+                    if (isGameOver) return;
+                    
+                    if (canAddCactus()) {
+                        const cactus = document.createElement('div');
+                        cactus.classList.add('cactus');
+                        game.appendChild(cactus);
+                        
+                        let cactusPosition = 800;
+                        cactus.style.left = cactusPosition + 'px';
+                        
+                        cacti.push(cactus);
+                    }
+                    
+                    let randomTime = Math.random() * 500 + 300;
+                    setTimeout(createCactus, randomTime);
+                }
+                
+                function updateScore() {
+                    score++;
+                    scoreElement.textContent = score;
+                    
+                    if (score % 100 === 0) {
+                        speed += 0.5;
+                    }
+                }
+                
+                function checkCollision() {
+                    const dinoRect = dino.getBoundingClientRect();
+                    
+                    for (let i = 0; i < cacti.length; i++) {
+                        const cactus = cacti[i];
+                        const cactusRect = cactus.getBoundingClientRect();
+                        
+                        if (
+                            dinoRect.right > cactusRect.left &&
+                            dinoRect.left < cactusRect.right &&
+                            dinoRect.bottom > cactusRect.top
+                        ) {
+                            cactus.style.backgroundImage = "url('lew2.png')";
+                            dino.style.display = 'none';
+                            gameOver();
+                            break;
+                        }
+                    }
+                }
+                
+                function gameOver() {
+                    isGameOver = true;
+                    gameOverElement.style.display = 'block';
+                    restartButton.style.display = 'block';
+                    clearInterval(gameInterval);
+                    clearInterval(animationInterval);
+                }
+                
+                function restartGame() {
+                    isGameOver = false;
+                    isGameStarted = false;
+                    startButton.style.display = 'block';
+                    gameOverElement.style.display = 'none';
+                    restartButton.style.display = 'none';
+                    
+                    // Reset pozycji żyrafy
+                    position = 0;
+                    dino.style.bottom = '10px';
+                    dino.style.backgroundImage = "url('antylopa1.png')";
+                    dino.style.display = 'block';
+                    
+                    // Usuń wszystkie lwy
+                    clearCacti();
+                    
+                    // Zresetuj wynik
+                    score = 0;
+                    scoreElement.textContent = score;
+                    speed = 5;
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt Tailwind CSS</title>
+    <link href="output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <h1 class="text-4xl font-bold text-center mb-8 text-sky-700">Projekt z Tailwind CSS</h1>
+
+    <!-- Zadania podstawowe -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-sky-600">Zadania podstawowe</h2>
+
+        <!-- 1. Różne kolory tekstu i linków -->
+        <div class="mb-6">
+            <h3 class="text-xl font-medium mb-2 text-green-600">1. Różne kolory tekstu i linków</h3>
+            <p class="text-red-500">To jest tekst w kolorze czerwonym (text-red-500).</p>
+            <p class="text-blue-500">To jest tekst w kolorze niebieskim (text-blue-500).</p>
+            <p class="text-purple-500">To jest tekst w kolorze fioletowym (text-purple-500).</p>
+            <a href="#" class="text-orange-500 hover:text-orange-700">To jest link (hover:text-orange-700).</a>
+        </div>
+
+        <!-- 2. Różne kolory tła -->
+        <div class="mb-6">
+            <h3 class="text-xl font-medium mb-2 text-green-600">2. Różne kolory tła</h3>
+            <div class="bg-yellow-200 p-4 mb-2">Tło żółte (bg-yellow-200)</div>
+            <div class="bg-pink-200 p-4 mb-2">Tło różowe (bg-pink-200)</div>
+            <div class="bg-indigo-200 p-4">Tło indygowe (bg-indigo-200)</div>
+        </div>
+
+        <!-- 3. Efekt cienia (shadow) -->
+        <div class="mb-6">
+            <h3 class="text-xl font-medium mb-2 text-green-600">3. Efekt cienia</h3>
+            <div class="shadow-lg p-6 bg-white rounded-lg w-64">
+                <p>To jest element z cieniem (shadow-lg).</p>
+            </div>
+        </div>
+
+        <!-- 4. Stylizacja tabeli -->
+        <div class="mb-6">
+            <h3 class="text-xl font-medium mb-2 text-green-600">4. Stylizacja tabeli</h3>
+            <table class="table-auto border-collapse border border-slate-400 w-full">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-slate-300 p-2">Imię</th>
+                        <th class="border border-slate-300 p-2">Nazwisko</th>
+                        <th class="border border-slate-300 p-2">Wiek</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-slate-300 p-2">Jan</td>
+                        <td class="border border-slate-300 p-2">Kowalski</td>
+                        <td class="border border-slate-300 p-2">30</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-slate-300 p-2">Anna</td>
+                        <td class="border border-slate-300 p-2">Nowak</td>
+                        <td class="border border-slate-300 p-2">25</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. Animacja -->
+        <div>
+            <h3 class="text-xl font-medium mb-2 text-green-600">5. Animacja</h3>
+            <div class="flex items-center">
+                <div class="animate-ping h-4 w-4 bg-red-500 rounded-full"></div>
+                <span class="ml-2">To jest animowany element (animate-ping).</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zadania średnio zaawansowane -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 text-sky-600">Zadania średnio zaawansowane</h2>
+
+        <!-- 1. Flex row vs flex col -->
+        <div class="mb-6">
+            <h3 class="text-xl font-medium mb-2 text-green-600">1. Flex row vs flex col</h3>
+            <div class="mb-4">
+                <h4 class="font-medium mb-1">flex-row (domyślny)</h4>
+                <div class="flex flex-row bg-gray-200 p-2 mb-2">
+                    <div class="bg-blue-200 p-2 m-1">Element 1</div>
+                    <div class="bg-blue-200 p-2 m-1">Element 2</div>
+                    <div class="bg-blue-200 p-2 m-1">Element 3</div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-medium mb-1">flex-col</h4>
+                <div class="flex flex-col bg-gray-200 p-2">
+                    <div class="bg-green-200 p-2 m-1">Element 1</div>
+                    <div class="bg-green-200 p-2 m-1">Element 2</div>
+                    <div class="bg-green-200 p-2 m-1">Element 3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Flex auto vs flex none -->
+        <div>
+            <h3 class="text-xl font-medium mb-2 text-green-600">2. Flex auto vs flex none</h3>
+            <div class="mb-4">
+                <h4 class="font-medium mb-1">flex-auto (elementy rozciągają się, aby wypełnić przestrzeń)</h4>
+                <div class="flex bg-gray-200 p-2">
+                    <div class="flex-auto bg-purple-200 p-2 m-1">Element 1 (flex-auto)</div>
+                    <div class="flex-auto bg-purple-200 p-2 m-1">Element 2 (flex-auto)</div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-medium mb-1">flex-none (elementy nie zmieniają rozmiaru)</h4>
+                <div class="flex bg-gray-200 p-2">
+                    <div class="flex-none bg-yellow-200 p-2 m-1 w-32">Element 1 (flex-none)</div>
+                    <div class="flex-none bg-yellow-200 p-2 m-1 w-32">Element 2 (flex-none)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zadanie zaawansowane -->
+    <section>
+        <h2 class="text-2xl font-semibold mb-4 text-sky-600">Zadanie zaawansowane</h2>
+        <div>
+            <h3 class="text-xl font-medium mb-2 text-green-600">Minifikacja CSS za pomocą PostCSS</h3>
+            <p class="mb-2">Minifikacja została skonfigurowana w pliku <code>postcss.config.js</code> z użyciem <code>cssnano</code>.</p>
+            <div class="bg-gray-200 p-4 rounded">
+                <p class="font-mono text-sm">npm install -D cssnano</p>
+                <p class="font-mono text-sm">// postcss.config.js</p>
+                <p class="font-mono text-sm">module.exports = {</p>
+                <p class="font-mono text-sm">  plugins: {</p>
+                <p class="font-mono text-sm">    tailwindcss: {},</p>
+                <p class="font-mono text-sm">    autoprefixer: {},</p>
+                <p class="font-mono text-sm">    cssnano: {},</p>
+                <p class="font-mono text-sm">  },</p>
+                <p class="font-mono text-sm">};</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

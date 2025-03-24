@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <title>Wisielec</title>
+    <style>
+        .litera {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            padding: 5px;
+            margin: 5px;
+            border: 2px solid gray;
+            cursor: pointer;
+            border-radius: 7px;
+            font-weight: 700;
+            font-size: 27px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .litera:hover {
+            background-color: #222222;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .reset {
+            color: #0062c0;
+            cursor: pointer;
+            font-size: 24px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .reset:hover {
+            color: #0082ff;
+        }
+
+        .haslo-znak {
+            font-size: 36px;
+            margin: 0 10px;
+            font-weight: 700;
+            display: inline-block;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .alfabet-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 7px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .szubienica-img {
+            object-fit: contain;
+        }
+
+        /* Media query dla szerokości mniejszej niż 900px */
+        @media (max-width: 899px) {
+            .game-content {
+                display: none;
+            }
+            .screen-too-small {
+                display: block !important;
+                text-align: center;
+                padding: 20px;
+                font-size: 18px;
+                color: #d32f2f;
+                background-color: #ffebee;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+        }
+
+        .screen-too-small {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="content-box w-[70%] max-w-[1400px] bg-gray-100 border-2 border-gray-300 shadow-[0_4px_8px_rgba(0,0,0,0.1)] text-gray-800 font-sans mx-auto p-8 rounded-lg">
+        <h1 id="zwierzęta-afryki" class="text-4xl font-bold text-sky-600 mb-4">Wisielec</h1>
+        
+        <div class="screen-too-small">
+            Twoja przeglądarka jest zbyt wąska, aby grać w tę grę.<br>
+            Minimalna wymagana szerokość to 900px.<br>
+            Obróć urządzenie lub użyj większego ekranu.
+        </div>
+        
+        <!-- Gra Wisielec -->
+        <div id="wisielec-container" class="flex flex-col items-center game-content">
+            <!-- Obrazek wisielca -->
+            <div id="szubienica" class="mb-8 flex justify-center">
+                <img src="img/s0.jpg" alt="Wisielec" class="szubienica-img" id="szubienica-img">
+            </div>
+            
+            <!-- Hasło do zgadnięcia -->
+            <div id="plansza" class="mb-12 text-center"></div>
+            
+            <!-- Alfabet do zgadywania -->
+            <div id="alfabet" class="p-6 rounded-lg">
+                <div class="alfabet-grid" id="alfabet-grid"></div>
+            </div>
+            
+            <!-- Przycisk resetu -->
+            <div id="reset" class="mt-8 text-center hidden">
+                <span class="reset" onclick="location.reload()">GRAJ PONOWNIE</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funkcja sprawdzająca rozmiar ekranu
+        function checkScreenSize() {
+            const gameContent = document.querySelector('.game-content');
+            const warningMessage = document.querySelector('.screen-too-small');
+            
+            if (window.innerWidth < 900) {
+                gameContent.style.display = 'none';
+                warningMessage.style.display = 'block';
+            } else {
+                gameContent.style.display = 'flex';
+                warningMessage.style.display = 'none';
+            }
+        }
+
+        // Sprawdź rozmiar przy ładowaniu
+        checkScreenSize();
+
+        // Nasłuchuj zmian rozmiaru okna
+        window.addEventListener('resize', checkScreenSize);
+
+        // Reszta kodu gry (tylko jeśli ekran jest wystarczająco duży)
+        if (window.innerWidth >= 900) {
+            // Lista zwierząt Afryki
+            const zwierzetaAfryki = [
+                "LEW", "SŁOŃ", "ŻYRAFA", "HIPOPOTAM", "NOSOROŻEC", "GEPARD", 
+                "PANTERA", "GUŹLEC", "KROKODYL", "HIENA", "BAWÓŁ", "SZAKAL",
+                "SURYKATKA", "GORYL", "SZYMPANS", "GAZELA", "STRUŚ", "SĘP", 
+                "KAMELEON", "KOBRA", "PYTON", "WARAN"
+            ];
+
+            // Losowanie hasła
+            function losujHaslo() {
+                return zwierzetaAfryki[Math.floor(Math.random() * zwierzetaAfryki.length)];
+            }
+
+            let haslo = losujHaslo();
+            haslo = haslo.toUpperCase();
+            let dlugosc = haslo.length;
+            let ile_skuch = 0;
+            let haslo1 = "";
+
+            // Inicjalizacja hasła
+            for (let i = 0; i < dlugosc; i++) {
+                if (haslo.charAt(i) === " ") haslo1 += " ";
+                else haslo1 += "_";
+            }
+
+            // Funkcja do wyświetlania hasła
+            function wypisz_haslo() {
+                const plansza = document.getElementById("plansza");
+                plansza.innerHTML = "";
+                
+                for (let i = 0; i < dlugosc; i++) {
+                    const znak = document.createElement("span");
+                    znak.className = "haslo-znak";
+                    znak.textContent = haslo1.charAt(i);
+                    plansza.appendChild(znak);
+                }
+            }
+
+            // Alfabet polski
+            const litery = [
+                "A", "Ą", "B", "C", "Ć", "D", "E", "Ę", "F", "G", "H", "I", 
+                "J", "K", "L", "Ł", "M", "N", "Ń", "O", "Ó", "P", "Q", "R", 
+                "S", "Ś", "T", "U", "V", "W", "X", "Y", "Z", "Ż", "Ź"
+            ];
+
+            // Funkcja inicjalizująca grę
+            function start() {
+                const alfabetGrid = document.getElementById("alfabet-grid");
+                
+                litery.forEach((litera, index) => {
+                    const przycisk = document.createElement("div");
+                    przycisk.className = "litera";
+                    przycisk.id = "lit" + index;
+                    przycisk.textContent = litera;
+                    przycisk.addEventListener("click", () => sprawdz(index));
+                    alfabetGrid.appendChild(przycisk);
+                });
+                
+                wypisz_haslo();
+                document.getElementById("szubienica-img").src = "img/s0.jpg";
+            }
+
+            // Funkcja do aktualizacji stanu gry
+            function aktualizujStan() {
+                document.getElementById("szubienica-img").src = "img/s" + ile_skuch + ".jpg";
+            }
+
+            // Funkcja sprawdzająca literę
+            function sprawdz(nr) {
+                let trafiona = false;
+                const litera = litery[nr];
+                const element = document.getElementById("lit" + nr);
+                
+                // Sprawdź czy litera jest w haśle
+                for (let i = 0; i < dlugosc; i++) {
+                    if (haslo.charAt(i) === litera) {
+                        haslo1 = haslo1.substring(0, i) + litera + haslo1.substring(i + 1);
+                        trafiona = true;
+                    }
+                }
+                
+                if (trafiona) {
+                    // Poprawna litera
+                    element.style.background = "#001533";
+                    element.style.color = "#0062c0";
+                    element.style.border = "3px solid #0062c0";
+                    element.style.cursor = "default";
+                    element.onclick = null;
+                    
+                    wypisz_haslo();
+                } else {
+                    // Błędna litera
+                    element.style.background = "#332900";
+                    element.style.color = "#c09800";
+                    element.style.border = "3px solid #c09800";
+                    element.style.cursor = "default";
+                    element.onclick = null;
+                    
+                    ile_skuch++;
+                    aktualizujStan();
+                }
+                
+                // Sprawdź warunki zakończenia gry
+                if (haslo === haslo1) {
+                    // Wygrana
+                    document.getElementById("alfabet").innerHTML = 
+                        `<div class="text-center text-2xl text-green-500 p-4">Gratulacje! Odgadłeś: ${haslo}</div>`;
+                    document.getElementById("reset").classList.remove("hidden");
+                } else if (ile_skuch >= 8) {
+                    // Przegrana
+                    document.getElementById("alfabet").innerHTML = 
+                        `<div class="text-center text-2xl text-orange-500 p-4"> </br> Przegrałeś! Hasło to: ${haslo}</div>`;
+                    document.getElementById("reset").classList.remove("hidden");
+                }
+            }
+
+            // Start gry po załadowaniu strony
+            window.onload = start;
+        }
+    </script>
+</body>
+</html>

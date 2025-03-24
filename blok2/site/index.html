@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Zwierzątka</title>
+</head>
+<body class="bg-gray-100">
+    <div class="content-box w-[70%] max-w-[1400px] bg-gray-100 border-2 border-gray-300 shadow-[0_4px_8px_rgba(0,0,0,0.1)] text-gray-800 font-sans mx-auto p-8 rounded-lg">
+        <h1 id="zwierzęta-afryki" class="text-4xl font-bold text-sky-600 mb-4">Zwierzęta Afryki</h1> </br>
+
+        <p class="text-lg text-gray-700 mb-6">Afryka to kontynent o niezwykłej różnorodności biologicznej, będący domem dla wielu unikalnych gatunków zwierząt. Poniżej znajdziesz kilka ciekawych informacji na temat zwierząt zamieszkujących ten kontynent.</p> </br>
+
+
+        <!-- Mapa (widoczna tylko na dużych ekranach) -->
+        <div class="mapa-naglowek">
+            <h2 id="mapa-zwierząt-afryki" class="text-2xl font-semibold text-green-600 mb-4">Mapa zwierząt Afryki</h2>
+            <p class="text-lg text-gray-700 mb-6">Kliknij na jedno ze zwierząt na mapie, aby dowiedzieć się więcej:</p>
+        </div>
+        <div class="mapa"> <!--  https://www.image-map.net/  -->
+            <img src="images/mapka.png" usemap="#image-map" style="width: 100%; max-width: 732px; height: auto;">
+            <map name="image-map">
+                <area target="_top" alt="Zebra" title="Zebra" href="#" coords="445,601,415,600,415,562,381,559,382,602,351,594,361,551,350,496,333,487,336,476,371,484,384,520,437,522" shape="poly" onclick="openModal('zebraModal')">
+                <area target="_self" alt="Lew" title="Lew" href="#" coords="398,450,470,453,464,428,484,398,475,361,447,355,425,374,429,398,406,415" shape="poly" onclick="openModal('lewModal')">
+                <area target="_self" alt="Nosorozec" title="Nosorozec" href="#" coords="494,340,468,337,469,321,446,318,445,337,419,334,416,294,434,270,464,269,482,256,504,262,527,304,543,300,542,321,520,333,499,310" shape="poly" onclick="openModal('nosorozecModal')">
+                <area target="_self" alt="Slon" title="Slon" href="#" coords="236,440,274,439,271,409,318,406,315,442,353,442,360,376,385,407,385,364,415,337,376,313,346,324,320,335,252,344" shape="poly" onclick="openModal('slonModal')">
+                <area target="_self" alt="Zyrafa" title="Zyrafa" href="#" coords="161,263,159,324,129,324,148,239,178,217,218,157,223,141,244,141,236,162,229,172,206,251,209,318,183,324,184,259" shape="poly" onclick="openModal('zyrafaModal')">
+                <area target="_self" alt="Hipopotam" title="Hipopotam" href="#" coords="381,295,356,296,354,286,301,281,299,292,276,296,276,273,240,271,231,256,240,249,250,224,276,220,336,211,380,221,389,251" shape="poly" onclick="openModal('hipopotamModal')">
+                <area target="_self" alt="Goryl" title="Goryl" href="#" coords="334,181,285,181,268,171,262,144,278,126,287,101,305,94,315,85,330,91,341,107,339,139,344,156" shape="poly" onclick="openModal('gorylModal')">
+            </map>
+        </div>
+
+        <!-- Lista zwierząt (widoczna tylko na małych ekranach) -->
+        <div class="lista-zwierzat">
+            <details>
+                <summary>Zebra</summary>
+                <p>To jedno z najbardziej rozpoznawalnych zwierząt Afryki, należy do koniowatych i posiada umaszczenie w charakterystyczne czarno – białe pasy. Zebry żyją w stadach i dzięki temu umaszczeniu drapieżnikowi trudniej jest wychwycić wzrokiem jedną konkretną zebrę – kolorystycznie zlewają się w całość.</p>
+            </details>
+            <details>
+                <summary>Lew</summary>
+                <p>Nazywany potocznie królem zwierząt – lew, jest drugim co do wielkości kotem na Ziemi, o długości całkowitej sięgającej 3,5 metra wraz z metrowym ogonem. Lwy to najniebezpieczniejsze zwierzęta Afryki. Charakterystyczna dla samca lwa jest bujna grzywa wokół głowy, zwykle w takim samym, jasnobrązowym kolorze, jak reszta ciała zwierzęcia.</p>
+            </details>
+            <details>
+                <summary>Nosorożec</summary>
+                <p>Istnieje 5 gatunków nosorożców. Zwierzęta żyjące w Afryce to nosorożce białe i czarne. Najbardziej charakterystyczną cechą nosorożca, są rogi na nosie, z których przedni jest wyraźnie dłuższy i u nosorożca białego osiąga nawet 1,5 metra długości. Nosorożce to drugie co do wielkości zwierzęta lądowe o długości do 4 metrów, wysokości do 1,85 metra i wadze do 2,5 tony.</p>
+            </details>
+            <details>
+                <summary>Słoń afrykański</summary>
+                <p>Słoń afrykański jest największym zwierzęciem lądowym, jakie obecnie żyje na Ziemi. Jego długość wraz z trąbą wynosi nawet 7,5 metra, wysokość w kłębie do 4 metrów, a waga nawet 7 ton. Cechami, z których najbardziej znane są te zwierzęta żyjące w Afryce, są uszy o długości nawet 1,5 metra, trąba i charakterystyczne kły.</p>
+            </details>
+            <details>
+                <summary>Żyrafa</summary>
+                <p>Żyrafy, to najwyższe zwierzęta w Afryce i na całej planecie. Cechą charakterystyczną roślinożernej żyrafy, jest długa szyja, wraz z którą samiec może osiągać nawet 6 metrów wysokości. Samice są nieco niższe. Umaszczenie żyrafy, to brązowe, lub pomarańczowe łaty na kremowym, czasem białym tle.</p>
+            </details>
+            <details>
+                <summary>Hipopotam</summary>
+                <p>Z pozoru ciężkie i niezgrabne hipopotamy są niezwykle niebezpiecznymi zwierzętami, dzięki długim, groźnym kłom i niezwykle ostrym siekaczom. Długość ciała dorosłego hipopotama może sięgać nawet 4,5 metra, wysokość 1,5 metra, a masa nawet 4,5 tony. Jego ciało ma charakterystyczny beczkowaty kształt.</p>
+            </details>
+            <details>
+                <summary>Goryl</summary>
+                <p>Największa współcześnie żyjąca małpa naczelna. Dorosły samiec osiąga 175 centymetrów wzrostu i wagę nawet 200 kilogramów. Charakterystyczna jest wystająca żuchwa goryli. Ciekawostką jest fakt, że tak jak ludzie, goryle mają indywidualne odciski palców.</p>
+            </details>
+        </div> </br>
+
+        <!-- Modale dla każdego zwierzęcia -->
+        <div id="zebraModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('zebraModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-orange-500 mb-4">Zebra</h2>
+                <img src="images/animal_10.jpg" alt="Zebra" style="width:100%">
+                <p>To jedno z najbardziej rozpoznawalnych zwierząt Afryki, należy do koniowatych i posiada umaszczenie w charakterystyczne czarno – białe pasy. Zebry żyją w stadach i dzięki temu umaszczeniu drapieżnikowi trudniej jest wychwycić wzrokiem jedną konkretną zebrę – kolorystycznie zlewają się w całość.</p>
+            </div>
+        </div>
+
+        <div id="lewModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('lewModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-red-500 mb-4">Lew</h2>
+                <img src="images/animal_1.jpg" alt="Lew" style="width:100%;">
+                <p>Nazywany potocznie królem zwierząt – lew, jest drugim co do wielkości kotem na Ziemi, o długości całkowitej sięgającej 3,5 metra wraz z metrowym ogonem. Lwy to najniebezpieczniejsze zwierzęta Afryki. Charakterystyczna dla samca lwa jest bujna grzywa wokół głowy, zwykle w takim samym, jasnobrązowym kolorze, jak reszta ciała zwierzęcia.</p>
+            </div>
+        </div>
+
+        <div id="nosorozecModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('nosorozecModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-yellow-500 mb-4">Nosorożec</h2>
+                <img src="images/animal_6.jpg" alt="Nosorożec" style="width:100%;">
+                <p>Istnieje 5 gatunków nosorożców. Zwierzęta żyjące w Afryce to nosorożce białe i czarne. Najbardziej charakterystyczną cechą nosorożca, są rogi na nosie, z których przedni jest wyraźnie dłuższy i u nosorożca białego osiąga nawet 1,5 metra długości. Nosorożce to drugie co do wielkości zwierzęta lądowe o długości do 4 metrów, wysokości do 1,85 metra i wadze do 2,5 tony.</p>
+            </div>
+        </div>
+
+        <div id="slonModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('slonModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-blue-500 mb-4">Słoń afrykański</h2>
+                <img src="images/animal_0.jpg" alt="Słoń" style="width:100%;">
+                <p>Słoń afrykański jest największym zwierzęciem lądowym, jakie obecnie żyje na Ziemi. Jego długość wraz z trąbą wynosi nawet 7,5 metra, wysokość w kłębie do 4 metrów, a waga nawet 7 ton. Cechami, z których najbardziej znane są te zwierzęta żyjące w Afryce, są uszy o długości nawet 1,5 metra, trąba i charakterystyczne kły.</p>
+            </div>
+        </div>
+
+        <div id="zyrafaModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('zyrafaModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-lime-500 mb-4">Żyrafa</h2>
+                <img src="images/animal_2.jpg" alt="Żyrafa" style="width:100%;">
+                <p>Żyrafy, to najwyższe zwierzęta w Afryce i na całej planecie. Cechą charakterystyczną roślinożernej żyrafy, jest długa szyja, wraz z którą samiec może osiągać nawet 6 metrów wysokości. Samice są nieco niższe. Umaszczenie żyrafy, to brązowe, lub pomarańczowe łaty na kremowym, czasem białym tle.</p>
+            </div>
+        </div>
+
+        <div id="hipopotamModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('hipopotamModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-teal-500 mb-4">Hipopotam</h2>
+                <img src="images/animal_5.jpg" alt="Hipopotam" style="width:100%;">
+                <p>Z pozoru ciężkie i niezgrabne hipopotamy są niezwykle niebezpiecznymi zwierzętami, dzięki długim, groźnym kłom i niezwykle ostrym siekaczom. Długość ciała dorosłego hipopotama może sięgać nawet 4,5 metra, wysokość 1,5 metra, a masa nawet 4,5 tony. Jego ciało ma charakterystyczny beczkowaty kształt.</p>
+            </div>
+        </div>
+
+        <div id="gorylModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('gorylModal')">&times;</span>
+                <h2 class="text-3xl font-semibold text-indigo-500 mb-4">Goryl</h2>
+                <img src="images/animal_9.jpg" alt="Goryl" style="width:100%;">
+                <p>Największa współcześnie żyjąca małpa naczelna. Dorosły samiec osiąga 175 centymetrów wzrostu i wagę nawet 200 kilogramów. Charakterystyczna jest wystająca żuchwa goryli. Ciekawostką jest fakt, że tak jak ludzie, goryle mają indywidualne odciski palców.</p>
+            </div>
+        </div> 
+
+
+        <h2 id="wielka-piątka-afryki" class="text-2xl font-semibold text-green-600 mb-4">Wielka Piątka Afryki</h2>
+        <ol class="list-decimal list-inside text-gray-700 mb-6">
+            <li class="mb-2"><strong class="text-red-500">Lew</strong> – król zwierząt, symbol siły i odwagi.</li>
+            <li class="mb-2"><strong class="text-blue-500">Słoń afrykański</strong> – największe lądowe zwierzę na Ziemi.</li>
+            <li class="mb-2"><strong class="text-purple-500">Bawół afrykański</strong> – potężny i niebezpieczny roślinożerca.</li>
+            <li class="mb-2"><strong class="text-yellow-500">Nosorożec</strong> – masywne zwierzę o charakterystycznym rogu.</li>
+            <li class="mb-2"><strong class="text-pink-500">Lampart</strong> – mistrz kamuflażu i jeden z najskuteczniejszych drapieżników.</li>
+        </ol> </br>
+
+        <h2 id="inne-ciekawe-gatunki" class="text-2xl font-semibold text-green-600 mb-4">Inne ciekawe gatunki</h2>
+        <ul class="list-disc list-inside text-gray-700 mb-6">
+            <li class="mb-2"><strong class="text-indigo-500">Goryl górski</strong> – jeden z najbliższych krewnych człowieka.</li>
+            <li class="mb-2"><strong class="text-teal-500">Hipopotam</strong> – duży ssak wodny, znany z agresywnego zachowania.</li>
+            <li class="mb-2"><strong class="text-orange-500">Zebra</strong> – charakterystyczne pasiaste konie afrykańskie.</li>
+            <li class="mb-2"><strong class="text-lime-500">Gepard</strong> – najszybsze lądowe zwierzę na świecie.</li>
+            <li class="mb-2"><strong class="text-cyan-500">Struś</strong> – największy ptak na Ziemi, nielot.</li>
+        </ul> </br>
+
+        <h2 id="zagrożenia-dla-zwierząt-w-afryce" class="text-2xl font-semibold text-green-600 mb-4">Zagrożenia dla zwierząt w Afryce</h2>
+        <p class="text-lg text-gray-700 mb-6">Niestety, wiele gatunków zwierząt w Afryce jest zagrożonych wyginięciem z powodu kłusownictwa, utraty siedlisk i zmian klimatycznych. Ważne jest, aby podejmować działania na rzecz ochrony tych niezwykłych stworzeń.</p> </br>
+        
+
+        
+        <h2 id="gry" class="text-2xl font-semibold text-green-600 mb-4">Gry o zwierzętach</h2>
+			<p> Jeśli znudziły Cię zwierzęta Afryki (choć mam nadzieję, że nie), abyś pozostał na stronie odwiedź stronę z grami</p> </br>
+		    <div class="text-center mb-6">	
+		        <a href="gry/gry.html" class="inline-block px-6 py-3 font-bold rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+			    🎮 Zobacz gry o zwierzętach 🐾
+		        </a>
+		    </div>
+
+
+
+        <script>
+            // Funkcja do otwierania modala
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = "block";
+            }
+
+            // Funkcja do zamykania modala
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = "none";
+            }
+
+            // Zamknij modal po kliknięciu poza nim
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = "none";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

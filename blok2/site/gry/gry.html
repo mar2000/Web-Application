@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Zwierzątka</title>
+    <style>
+        /* Style ogólne */
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .postcard {
+            width: 30%;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .postcard p {
+            margin-top: 10px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        /* Efekt 1: Pomniejszenie (z oryginalnego photo1) */
+        .effect1 {
+            width: 100%;
+            transition: all 0.2s ease-in-out;
+            overflow: hidden;
+        }
+        
+        .effect1 img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .effect1:hover {
+            transform: scale(0.9);
+        }
+        
+        /* Efekt 2: Pomniejszenie i obrót (z oryginalnego photo2) */
+        .effect2 {
+            width: 100%;
+            transition: transform .2s ease-in-out;
+            overflow: hidden;
+        }
+        
+        .effect2 img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .effect2:hover {
+            transform: scale(0.95) rotate(5deg);
+        }
+        
+        /* Efekt 6: Powiększenie i obrót w przeciwną stronę (z oryginalnego photo6) */
+        .effect6 {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .effect6 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.7s ease-in-out;
+        }
+        
+        .effect6:hover img {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        /* Responsywność - układ kolumnowy dla wąskich ekranów */
+        @media (max-width: 899px) {
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .postcard {
+                width: 80%;
+                max-width: 300px;
+                margin-bottom: 40px;
+            }
+            
+            .postcard:last-child {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="content-box w-[70%] max-w-[1400px] bg-gray-100 border-2 border-gray-300 shadow-[0_4px_8px_rgba(0,0,0,0.1)] text-gray-800 font-sans mx-auto p-8 rounded-lg">
+        <h1 id="zwierzęta-afryki" class="text-4xl font-bold text-sky-600 mb-4">Zwierzęta Afryki</h1> </br>
+        
+        <div class="gallery">
+            <!-- Efekt 1: Pomniejszenie -->
+            <div class="postcard">
+                <div class="effect1">
+                    <a href="wisielec.html">
+                        <img src="wisielec.png" alt="Lew">
+                    </a>
+                </div>
+                <p>Wisielec</p>
+            </div>
+            
+            <!-- Efekt 2: Pomniejszenie i obrót -->
+            <div class="postcard">
+                <div class="effect2">
+                    <a href="tic_tac_toe.html">
+                        <img src="kolkoIkrzyzyk.png" alt="Słoń">
+                    </a>
+                </div>
+                <p>Kółko i krzyżyk</p>
+            </div>
+            
+            <!-- Efekt 6: Powiększenie i obrót w przeciwną stronę -->
+            <div class="postcard">
+                <div class="effect1">
+                    <a href="jumping.html">
+                        <img src="dino.png" alt="Żyrafa">
+                    </a>
+                </div>
+                <p>Skacząca antylopa</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
